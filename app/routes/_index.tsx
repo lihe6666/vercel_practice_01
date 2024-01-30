@@ -8,12 +8,8 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default async function Index({
-  params,
-}: {
-  params: { user: string };
-}) {
-  const { rows } = await sql`SELECT * FROM CARTS where user_id=${params.user}`;
+export default async function Index() {
+  const { rows } = await sql`SELECT * FROM CARTS where user_id=1`;
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
