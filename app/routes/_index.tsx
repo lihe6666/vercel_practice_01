@@ -8,19 +8,18 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default async function Index() {
-  const { rows } = await sql`SELECT * FROM users where id=1`;
+export async function getUsers() {
+    const { rows } = await sql`SELECT * FROM users where id=1`;
 
+    console.log(rows)
+}
+
+export default function Index() {
+  getUsers().then((e) => {
+    console.log(e)
+  })
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <div>
-        {rows.map((row) => (
-          <div key={row.id}>
-            {row.id} - {row.quantity}
-          </div>
-        ))}
-      </div>
-
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
