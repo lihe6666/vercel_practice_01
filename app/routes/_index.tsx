@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { sql } from "@vercel/postgres";
 
 export const meta: MetaFunction = () => {
   return [
@@ -7,9 +8,23 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export default function Index() {
+export default async function Index({
+  params,
+}: {
+  params: { user: string };
+}): Promise<JSX.Element> {
+  const { rows } = await sql`SELECT * FROM CARTS where user_id=${params.user}`;
+
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
+      <div>
+        {rows.map((row) => (
+          <div key={row.id}>
+            {row.id} - {row.quantity}
+          </div>
+        ))}
+      </div>
+      
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
