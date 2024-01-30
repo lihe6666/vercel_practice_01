@@ -15,18 +15,6 @@ export async function getUsers() {
 }
 
 export default function Index() {
-  getUsers().then((rows) => {
-    return (
-      <div>
-      {rows.map((row) => (
-        <div key={row.id}>
-          {row.id} - {row.quantity}
-        </div>
-      ))}
-    </div>
-    )
-  })
-  /*
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       <h1>Welcome to Remix</h1>
@@ -57,5 +45,4 @@ export default function Index() {
       </ul>
     </div>
   );
-  */
 }
