@@ -9,7 +9,7 @@ export const meta: MetaFunction = () => {
 };
 
 export default async function Index() {
-  const { rows } = await sql`SELECT * FROM Users where id=1`;
+  const { rows } = await sql`SELECT * FROM users where id=1`;
 
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
