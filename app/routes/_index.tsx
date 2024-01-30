@@ -12,7 +12,7 @@ export default async function Index({
   params,
 }: {
   params: { user: string };
-}): Promise<JSX.Element> {
+}) {
   const { rows } = await sql`SELECT * FROM CARTS where user_id=${params.user}`;
 
   return (
@@ -24,7 +24,7 @@ export default async function Index({
           </div>
         ))}
       </div>
-      
+
       <h1>Welcome to Remix</h1>
       <ul>
         <li>
